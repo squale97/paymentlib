@@ -1,0 +1,21 @@
+{
+    "name": "pooldevmtdpce/payment",
+    "description": "Brique de payement",
+    "type": "library",
+    "license": "MTDPCE Transition Digitale Burkina",
+    "autoload": {
+        "psr-4": {
+            "Pooldevmtdpce\\Payment\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PooldevMTDPCEBurkina"
+        }
+    ],
+   
+
+    "require": {
+        "laravel/framework": "^8.0"
+    }
+}
