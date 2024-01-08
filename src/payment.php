@@ -16,7 +16,7 @@ class Paiement
 
     public function payOrange($montant, $numberUser, $numberReceiver, $username, $password)
     {
-        $url = 'http://example.com/xml-rpc-endpoint'; // Remplacez par l'URL de votre endpoint
+        $url = 'http://orangeTestapi.com'; // Remplacez par l'URL de votre endpoint
 
         $xmlData = [`<?xml version="1.0" encoding="UTF-8"?>
                     <COMMAND>
