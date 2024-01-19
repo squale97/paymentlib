@@ -19,17 +19,19 @@ class Paiement
 
        
 
-    public function payOrange($montant, $numberUser, $numberReceiver, $codeOtp, $username, $password)
+    public function payOrange($montant, $numberUser, $codeOtp)
     {
-        if ($numberUser== null || $codeOtp == null || $codeOtp == '' || $numberReceiver == null || $montant== null) {
+        if ($numberUser== null || $codeOtp == null || $codeOtp == '' || $montant== null) {
             return false;
         }
         $numberUser = str_replace(' ', '', $numberUser);
         $codeOtp = str_replace(' ', '', $codeOtp);
-        $username = "username";//Nom d’utilisateur du partenaire pour l’API fourni par Orange
-        $password = "123456"; //Mot de passe du partenaire pour l’API fourni par Orange
-        $referencenumber = "nom service par exemple ou autre"; // Information supplémentaire que le partenaire/Accepteur pourra envoyer.
-        $exttxtid = "numero dossier par exemple";//Reference de transaction du partenaire/Accepteur
+        $username =env("OM_USERNAME");//Nom d’utilisateur du partenaire pour l’API fourni par Orange
+        $password =env("OM_PASSWORD"); //Mot de passe du partenaire pour l’API fourni par Orange
+        $referencenumber =env("OM_REFERNCE_NUMBER"); // Information supplémentaire que le partenaire/Accepteur pourra envoyer.
+        $exttxtid =env("OM_REFERENCE_TRANSACTION");//Reference de transaction du partenaire/Accepteur
+        $numberReceiver =env("OM_NUMBER_RECEIVER");//Numero marchant
+        
 
         $client = new \GuzzleHttp\Client(['verify' => false]); //Verify = false : désactiver la vérification du certificat 
 
@@ -88,7 +90,7 @@ class Paiement
 
 
 
-    public function paiementOK( string $xmlString, string $numeroClient, string $otp, string $fraisdossier)
+    private function paiementOK( string $xmlString, string $numeroClient, string $otp, string $fraisdossier)
     {
         $statusPaiement = false;
         $response_status = '';
@@ -215,6 +217,3 @@ class Paiement
     
     
 }
-
-
-
