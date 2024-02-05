@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Http;
 use Exception;
 use Pooldevmtdpce\Payment\models\OMResponse;
 
-class Paiement 
+class Payment
 {
-    public function payOrange($montant, $numberUser, $codeOtp): OMResponse
+    public static function payOrange($montant, $numberUser, $codeOtp): OMResponse
     {
         $omResponse = new OMResponse(false, "Paiement non valide", "");
         if ($numberUser== null || $codeOtp == null || $codeOtp == '' || $montant== null) {
